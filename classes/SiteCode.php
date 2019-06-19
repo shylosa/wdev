@@ -1,7 +1,5 @@
 <?php
 
-require_once 'phpQuery/phpQuery/phpQuery.php';
-
 class SiteCode
 {
     private $address;
@@ -27,13 +25,10 @@ class SiteCode
         }
     }
 
-    public function getWrappedCode(string $tag): string
+    public function getSiteCode(): string
     {
-        $site = file_get_contents($this->address);
-        $pq = phpQuery::newDocument($site);
-        $pq->find($tag)->wrap("<$tag>");
+        return file_get_contents($this->address);
 
-        return $pq->html();
     }
 
 }
